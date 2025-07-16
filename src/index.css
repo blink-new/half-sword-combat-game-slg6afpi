@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 10%; /* #1A1A1A */
+    --foreground: 0 0% 96%; /* #F5F5F5 */
+    --card: 0 0% 5%; /* #0D0D0D */
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 100% 27%; /* #8B0000 - Dark Red */
+    --primary-foreground: 0 0% 96%;
+    --secondary: 30 69% 52%; /* #CD853F - Peru/Bronze */
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 30 69% 52%; /* #CD853F */
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 0 100% 27%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 5%; /* #0D0D0D */
+    --foreground: 0 0% 96%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 100% 27%;
+    --primary-foreground: 0 0% 96%;
+    --secondary: 30 69% 52%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 30 69% 52%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 0 100% 27%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-cinzel;
+
+    overflow: hidden;
+  }
+
+  html, body, #root {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .medieval-border {
+    border-image: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--primary))) 1;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .blood-splatter {
+    background: radial-gradient(circle, hsl(0deg 100% 27% / 80%) 0%, hsl(0deg 100% 27% / 40%) 50%, transparent 100%);
+  }
+
+  .metal-texture {
+    background: linear-gradient(135deg, 
+      hsl(var(--secondary)) 0%, 
+      hsl(var(--muted)) 25%, 
+      hsl(var(--secondary)) 50%, 
+      hsl(var(--muted)) 75%, 
+      hsl(var(--secondary)) 100%);
+  }
+
+  .combat-ui {
+    backdrop-filter: blur(8px);
+    background: hsl(0deg 0% 10% / 80%);
+    border: 1px solid hsl(var(--border));
+    transition: all 0.2s ease;
+  }
+
+  .combat-ui:hover {
+    background: hsl(0deg 0% 12% / 85%);
+    border-color: hsl(var(--secondary));
+  }
+
+  .screen-shake {
+    animation: shake 0.3s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px) translateY(1px); }
+    50% { transform: translateX(2px) translateY(-1px); }
+    75% { transform: translateX(-1px) translateY(2px); }
+  }
+
+  .damage-indicator {
+    animation: damage-flash 0.2s ease-out;
+  }
+
+  @keyframes damage-flash {
+    0% { background-color: transparent; }
+    50% { background-color: rgb(139 0 0 / 30%); }
+    100% { background-color: transparent; }
+  }
+}
